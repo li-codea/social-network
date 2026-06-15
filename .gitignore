@@ -1,0 +1,119 @@
+# ============================================================
+# 社交网络好友推荐系统 — Git 忽略规则
+# ============================================================
+# 作用域说明：
+#   根目录 .gitignore 的规则对整个仓库生效（包括所有子目录）。
+#   子目录的 .gitignore（如 frontend/.gitignore）会叠加在父规则之上。
+#   规则越往下越"具体"，子目录的规则优先级高于父目录。
+#
+# 匹配语法速查：
+#   *.log        匹配任意位置的 .log 文件
+#   /logs        只匹配根目录下的 logs 文件/目录
+#   logs/        匹配任意位置的 logs 目录
+#   !important.log  取消忽略（negate），重新追踪该文件
+#   **/build     匹配任意深度的 build 目录
+# ============================================================
+
+# ==================== Python ====================
+# 编译产物
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# 虚拟环境（整个 venv 目录不提交）
+venv/
+.venv/
+env/
+.env*
+
+# 但保留 .env.example 模板文件（队友需要参考它来创建自己的 .env）
+!.env.example
+
+# 分发/打包
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+*.whl
+
+# 测试与覆盖率
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# mypy 类型检查
+.mypy_cache/
+
+# ==================== Node.js / Vue 前端 ====================
+node_modules/
+dist/
+dist-ssr/
+*.local
+.output/
+
+# ==================== IDE 与编辑器 ====================
+# JetBrains（PyCharm / IntelliJ / WebStorm）
+.idea/
+
+# VS Code（工作区设置属于个人偏好，不提交）
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+
+# Vim / Neovim
+*.swp
+*.swo
+*~
+
+# Emacs
+*#*\n\#
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ==================== 操作系统 ====================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ==================== 日志与临时文件 ====================
+*.log
+*.tmp
+*.temp
+logs/
+
+# ==================== Docker ====================
+# Docker 数据卷（本地开发产生的数据不进仓库）
+mysql-data/
+# 如果本地有 docker-compose.override.yml 也不要提交
+docker-compose.override.yml
+
+# ==================== 项目特定 ====================
+# Claude Code 本地设置（含个人偏好和权限配置）
+.claude/settings.local.json
+
+# 数据库文件（本地 SQLite 等误入）
+*.db
+*.sqlite
+*.sqlite3
+
+# 环境变量备份（防止把 .env 复制多份）
+.env.backup
+.env.local
+.env.production
